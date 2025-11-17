@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Template - Clínica Odontológica</title>
+  <meta name="description" content="Template responsivo e acessível para clínicas odontológicas. Mobile first, integração com WhatsApp e mapa." />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="wrap" id="top">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">OD</div>
+        <div>
+          <div class="site-title">Clínica Odonto</div>
+          <div class="site-sub">Cuidados com sorriso – acessível e próximo</div>
+        </div>
+      </div>
+
+      <nav aria-label="Navegação principal">
+        <ul class="nav-list" role="list">
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#equipe">Equipe</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a class="cta" href="#agendar">Agendar</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <div class="hero-box">
+            <h1 id="hero-title">Seu sorriso em boas mãos — atendimento humanizado e acessível</h1>
+            <p>Template responsivo pensado para clínicas odontológicas de pequeno porte. Informações claras, agendamento rápido e suporte a usuários com necessidades especiais.</p>
+
+            <div class="actions" role="group" aria-label="Ações principais">
+              <a class="btn btn-ghost btn-whatsapp" 
+               href="https://wa.me/5511976385098?text=Olá,%20gostaria%20de%20falar%20com%20a%20Clínica%20Odonto" 
+               target="_blank" 
+               role="button">
+                <img src="imagem3.jpg" alt="Ícone do WhatsApp" class="icon-whatsapp">
+                Fale conosco
+              </a>
+              <a class="btn" href="#agendar" role="button">Agendar consulta</a>
+            </div>
+
+            <img src="imagem1.jpg" alt="Imagem ilustrativa da clínica odontológica" class="hero-img">
+          </div>
+        </div>
+
+        <aside class="card" aria-labelledby="map-label">
+          <h3 id="map-label">Localização</h3>
+          <div id="map" role="region" aria-label="Mapa com a localização da clínica"></div>
+          <div id="miniMap" role="img" aria-label="Mini mapa com a localização da clínica"></div>
+          <p class="muted" style="margin-top:0.6rem">Endereço: Av. Paulista, 1000 — São Paulo, SP</p>
+          <a href="https://www.google.com/maps?q=Av.+Paulista,+1000,+São+Paulo,+SP" target="_blank" class="btn btn-map">Ver no Google Maps</a>
+        </aside>
+      </section>
+
+      <section class="grid" aria-labelledby="servicos">
+        <div class="card" id="servicos">
+          <h2>Serviços</h2>
+          <ul>
+            <li>Consulta inicial e diagnóstico</li>
+            <li>Limpeza e profilaxia</li>
+            <li>Restaurações e tratamentos estéticos</li>
+            <li>Ortodontia e implantes</li>
+            <li>Clareamento dental</li>
+            <li>Tratamento de canal</li>
+          </ul>
+
+          <h3 style="margin-top:0.6rem">Por que escolher nossa clínica?</h3>
+          <p class="muted">
+            Nossa clínica odontológica foi projetada para oferecer uma experiência completa de cuidado com a saúde bucal, unindo tecnologia de ponta, atendimento humanizado e um ambiente confortável para todos os pacientes.
+            Acreditamos que um sorriso saudável é reflexo direto do bem-estar e da autoconfiança, por isso priorizamos consultas detalhadas e diagnósticos precisos antes de qualquer procedimento.
+            Além disso, contamos com equipamentos modernos e uma equipe experiente, preparada para atender desde os casos mais simples até os mais complexos, sempre com empatia e profissionalismo.
+          </p>
+
+          <img src="imagem2.jpg" alt="Equipe da clínica odontológica" class="img-servicos">
+        </div>
+
+        <div class="card" id="agendar">
+          <h2>Agende sua consulta</h2>
+          <form id="contactForm" aria-describedby="form-desc">
+            <p id="form-desc" class="muted">Preencha os dados abaixo e entraremos em contato — ou use o WhatsApp para agendamento imediato.</p>
+
+            <label for="name">Nome completo</label>
+            <input id="name" name="name" type="text" required aria-required="true" />
+
+            <label for="phone">Telefone (WhatsApp)</label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="(11) 9XXXX-XXXX" required />
+
+            <label for="service">Serviço desejado</label>
+            <select id="service" name="service">
+              <option value="consulta">Consulta</option>
+              <option value="limpeza">Limpeza</option>
+              <option value="estetica">Estética</option>
+              <option value="implante">Implante</option>
+            </select>
+
+            <label for="notes">Observações</label>
+            <textarea id="notes" name="notes" placeholder="Descreva brevemente o motivo da consulta"></textarea>
+
+            <button type="submit" class="btn" style="background:var(--accent);color:white;margin-top:0.6rem">Enviar</button>
+            <div id="response" aria-live="polite" style="margin-top:0.6rem"></div>
+          </form>
+
+          <hr style="margin:1rem 0" />
+
+          <strong>Contato rápido</strong>
+          <p class="muted">Clique para abrir o WhatsApp:</p>
+          <a href="https://wa.me/5511976385098?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta" 
+             target="_blank" 
+             aria-label="Iniciar conversa no WhatsApp"
+             class="whatsapp-link">
+             <img src="imagem3.jpg" alt="Ícone do WhatsApp" class="icon-whatsapp">
+             Iniciar conversa no WhatsApp
+          </a>
+        </div>
+      </section>
+
+      <section class="card" id="equipe" aria-labelledby="equipe-title" style="margin-top:1rem">
+        <h2 id="equipe-title">Equipe</h2>
+        <p class="muted">Profissionais qualificados: cirurgiões-dentistas generalistas e especialistas.</p>
+        <ul>
+          <li><strong>Dr. João Silva</strong> — CRO: 12345 — Especialista em Implantes</li>
+          <li><strong>Dra. Maria Pereira</strong> — CRO: 67890 — Endodontia e Estética</li>
+          <li><strong>Dr. Carlos Andrade</strong> — CRO: 54321 — Ortodontia</li>
+          <li><strong>Dra. Ana Lima</strong> — CRO: 98765 — Odontopediatria</li>
+          <li><strong>Dr. Paulo Souza</strong> — CRO: 45678 — Prótese Dentária</li>
+          <li><strong>Dra. Beatriz Oliveira</strong> — CRO: 11223 — Cirurgia Bucomaxilofacial</li>
+          <li><strong>Dr. Rafael Costa</strong> — CRO: 33445 — Periodontia</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Modelo de template — substitua conteúdos e números de telefone antes de publicar.</p>
+      <p><a href="#top">Voltar ao topo</a></p>
+    </footer>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const clinicCoords = [-23.55052, -46.633308];
+
+    const mainMap = L.map('map', { tap: false }).setView(clinicCoords, 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '© OpenStreetMap'
+    }).addTo(mainMap);
+    L.marker(clinicCoords).addTo(mainMap).bindPopup('Clínica Odonto - exemplo').openPopup();
+
+    const miniMap = L.map('miniMap', {
+      attributionControl: false,
+      zoomControl: false,
+      dragging: false,
+      scrollWheelZoom: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      tap: false,
+      touchZoom: false
+    }).setView(clinicCoords, 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(miniMap);
+    L.marker(clinicCoords).addTo(miniMap);
+
+    function refreshMaps() {
+      mainMap.invalidateSize();
+      miniMap.invalidateSize();
+    }
+    window.addEventListener('resize', refreshMaps);
+    setTimeout(refreshMaps, 300);
+
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const response = document.getElementById('response');
+      if(!name || !phone){
+        response.textContent = 'Por favor preencha nome e telefone.';
+        return;
+      }
+      response.textContent = 'Obrigado! Recebemos sua solicitação. Iremos entrar em contato pelo WhatsApp.';
+    });
+  </script>
+</body>
+</html>

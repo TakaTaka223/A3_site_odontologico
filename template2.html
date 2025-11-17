@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nome da Clínica</title>
+  <meta name="description" content="Descrição da clínica para Google e redes sociais." />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="Style copy.css"/>
+</head>
+<body>
+  <div class="wrap" id="top">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">OD</div>
+        <div>
+          <div class="site-title">NOME DA CLÍNICA</div>
+          <div class="site-sub">Slogan ou frase de impacto aqui</div>
+        </div>
+      </div>
+
+      <nav aria-label="Navegação principal">
+        <ul class="nav-list" role="list">
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#equipe">Equipe</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a class="cta" href="#agendar">Agendar</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <div class="hero-box">
+            <h1 id="hero-title">Título da clínica / texto de destaque</h1>
+            <p>Texto de apresentação da clínica. Use poucas linhas falando da proposta e do atendimento.</p>
+
+            <div class="actions" role="group" aria-label="Ações principais">
+              <a class="btn btn-ghost btn-whatsapp" 
+                 href="https://wa.me/55XXXXXXXXXXX?text=Olá,%20gostaria%20de%20informações"
+                 target="_blank"
+                 role="button">
+                <img src="icone-whatsapp.png" alt="Ícone do WhatsApp" class="icon-whatsapp">
+                Fale conosco
+              </a>
+              <a class="btn" href="#agendar" role="button">Agendar consulta</a>
+            </div>
+
+            <img src="hero.jpg" alt="Imagem ilustrativa da clínica" class="hero-img">
+          </div>
+        </div>
+
+        <aside class="card" aria-labelledby="map-label">
+          <h3 id="map-label">Localização</h3>
+          <div id="map" role="region" aria-label="Mapa com localização"></div>
+          <div id="miniMap" role="img" aria-label="Mini mapa"></div>
+          <p class="muted">Endereço da clínica aqui</p>
+          <a href="#" target="_blank" class="btn btn-map">Ver no Google Maps</a>
+        </aside>
+      </section>
+
+      <section class="grid" aria-labelledby="servicos">
+        <div class="card" id="servicos">
+          <h2>Serviços</h2>
+          <ul>
+            <li>Serviço 01</li>
+            <li>Serviço 02</li>
+            <li>Serviço 03</li>
+            <li>Serviço 04</li>
+          </ul>
+
+          <img src="imagem-servicos.jpg" alt="Imagem dos serviços" class="img-servicos">
+        </div>
+
+        <div class="card" id="agendar">
+          <h2>Agende sua consulta</h2>
+          <form id="contactForm">
+            <label for="name">Nome completo</label>
+            <input id="name" name="name" type="text" required />
+
+            <label for="phone">Telefone (WhatsApp)</label>
+            <input id="phone" name="phone" type="tel" required />
+
+            <label for="service">Serviço desejado</label>
+            <select id="service" name="service">
+              <option>Serviço 01</option>
+              <option>Serviço 02</option>
+            </select>
+
+            <label for="notes">Observações</label>
+            <textarea id="notes" name="notes"></textarea>
+
+            <button type="submit" class="btn">Enviar</button>
+            <div id="response"></div>
+          </form>
+
+          <hr />
+
+          <a href="https://wa.me/55XXXXXXXXXXX?text=Olá,%20quero%20agendar"
+             target="_blank"
+             class="whatsapp-link">
+             <img src="icone-whatsapp.png" alt="Ícone do WhatsApp" class="icon-whatsapp">
+             Agendar pelo WhatsApp
+          </a>
+        </div>
+      </section>
+
+      <section class="card" id="equipe" aria-labelledby="equipe-title">
+        <h2 id="equipe-title">Equipe</h2>
+        <ul>
+          <li>Nome do profissional — Especialidade</li>
+          <li>Nome do profissional — Especialidade</li>
+          <li>Nome do profissional — Especialidade</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>Rodapé da clínica — direitos autorais, CNPJ, links etc.</p>
+      <p><a href="#top">Voltar ao topo</a></p>
+    </footer>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const clinicCoords = [-23.55052, -46.633308]; // altere se desejar
+
+    const mainMap = L.map('map').setView(clinicCoords, 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mainMap);
+    L.marker(clinicCoords).addTo(mainMap);
+
+    const miniMap = L.map('miniMap', {
+      attributionControl: false, zoomControl: false, dragging: false,
+      scrollWheelZoom: false, doubleClickZoom: false, touchZoom: false
+    }).setView(clinicCoords, 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(miniMap);
+
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      document.getElementById('response').textContent =
+        'Mensagem enviada! Entraremos em contato.';
+    });
+  </script>
+</body>
+</html>
